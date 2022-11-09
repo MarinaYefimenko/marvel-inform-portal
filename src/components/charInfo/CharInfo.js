@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import useMarvelService from '../../services/MarvelService';
+import {_transformCharDescription} from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
@@ -22,6 +23,7 @@ const CharInfo = (props) => {
 
         clearError();
         getCharacter(charId)
+        .then(data => _transformCharDescription(data))
         .then(onCharLoaded)
     }
 
