@@ -4,7 +4,7 @@ import useMarvelService from '../../services/MarvelService';
 import {_transformCharDescription} from '../../services/MarvelService';
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
-
+import { Link } from 'react-router-dom';
 const RandomChar = () => {
     const [char, setChar] = useState(null);
     const {getCharacter, clearError, process, setProcess} = useMarvelService();
@@ -70,11 +70,11 @@ const View = ({data}) => {
                     {description}
                     </p>
                 <div className="randomchar__btns">
-                    <a href={homepage} className="button button__main">
-                        <div className="inner">homepage</div>
-                    </a>
-                    <a href={wiki} className="button button__secondary">
-                        <div className="inner">Wiki</div>
+                    <Link to={`/characters/${data.id}`} className="button button__main">
+                        <div className="inner">details</div>
+                    </Link>
+                    <a href={`https://www.google.com/search?q=${encodeURIComponent(name)} marvel character`} target="_blank" className="button button__secondary">
+                        <div className="inner">Search</div>
                     </a>
                 </div>
             </div>

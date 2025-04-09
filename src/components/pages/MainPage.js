@@ -33,11 +33,11 @@ const MainPage = () => {
             </ErrorBoundary>
             <div>
                 <ErrorBoundary>
-                    <CharInfo charId={selectedChar}/>
-                </ErrorBoundary>
-                <ErrorBoundary>
                     <CharSearchForm/>
                 </ErrorBoundary>
+                <ErrorBoundary>
+                    <CharInfo charId={selectedChar}/>
+                </ErrorBoundary>     
             </div>
         </div>
         <img className="bg-decoration" src={decoration} alt="vision"/>

@@ -54,11 +54,11 @@ const View = ({data}) => {
                     <div>
                         <div className="char__info-name">{name}</div>
                         <div className="char__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
+                            <Link to={`/characters/${data.id}`} className="button button__main">
+                                <div className="inner">details</div>
+                            </Link>
+                            <a href={`https://www.google.com/search?q=${encodeURIComponent(name)} marvel character`} target="_blank" className="button button__secondary">
+                                <div className="inner">Search</div>
                             </a>
                         </div>
                     </div>

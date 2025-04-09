@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -60,8 +61,8 @@ const CharList = (props) => {
         itemRefs.current[id].focus();
     }
 
-    function renderItems(arr) {
-        const items =  arr.map((item, i) => {
+    const renderItems = (arr) => {
+        const items = arr.map((item, i) => {
             let imgStyle = {'objectFit' : 'cover'};
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 imgStyle = {'objectFit' : 'unset'};
@@ -84,8 +85,10 @@ const CharList = (props) => {
                                 focusOnItem(i);
                             }
                         }}>
+                        <Link to={`/characters/${item.id}`}>
                             <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                             <div className="char__name">{item.name}</div>
+                        </Link>
                     </li>
                 </CSSTransition>
             )
